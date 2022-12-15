@@ -25,7 +25,7 @@ class BasicArray {
     }
     else
     {
-      echo "is not array ${arr}\n";
+      echo "is not array {$arr}\n";
       return $arr;
     }
   }
