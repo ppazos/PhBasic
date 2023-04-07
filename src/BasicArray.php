@@ -31,12 +31,12 @@ class BasicArray {
   }
 
   static function sort_file_paths_by_date($arr)
-  { 
+  {
     //Given an array containing file paths retuns the array in order by date.
     usort($arr, function($a, $b) {
-      return filemtime($a) < filemtime($b);
+      return filemtime($a) <=> filemtime($b);
     });
-    
+
     return $arr;
   }
 
@@ -52,12 +52,12 @@ class BasicArray {
 
     sort($arr1);
     sort($arr2);
-    
+
     return $arr1 == $arr2;
   }
 
   //flatten two dimensional array > one dimensional array
-  static function flatten($array) 
+  static function flatten($array)
   {
     $return = array();
     array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
