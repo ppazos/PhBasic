@@ -56,6 +56,22 @@ class BasicArray {
     return $arr1 == $arr2;
   }
 
+  static function array_search_key($needle_key, $array)
+  {
+    foreach($array as $key=>$value)
+    {
+      // echo $key .PHP_EOL;
+      // echo $needle_key .PHP_EOL;
+      if($key == $needle_key) return $value;
+      if(is_array($value))
+      {
+        if(($result = self::array_search_key($needle_key, $value)) !== false) return $result;
+      }
+    }
+    return false;
+  }
+
+
   //flatten two dimensional array > one dimensional array
   static function flatten($array)
   {
