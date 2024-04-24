@@ -114,7 +114,7 @@ class BasicString {
 
   // returns true if $needle is a substring of $haystack
   static function contains($haystack, $needle)
-  {   
+  {
     return strpos($haystack, $needle) !== false;
   }
 
@@ -129,7 +129,7 @@ class BasicString {
     $array_of_strings = array_map('trim', explode(',', $csv_string));
     sort($array_of_strings);
 
-    foreach ($array_of_strings as $key => $value) 
+    foreach ($array_of_strings as $key => $value)
     {
       if (empty($value))
       {
@@ -138,6 +138,26 @@ class BasicString {
     }
 
     return empty($array_of_strings) ? NULL : $array_of_strings;
+  }
+
+  static function filter_characters(string $description)
+  {
+    $right_quotation_mark = strpos($description, '’');
+    $left_quotation_mark = strpos($description, '‘');
+
+    if ($right_quotation_mark !== false)
+    {
+      // Replace right quotation mark
+      $description = str_replace('’', "'", $description);
+    }
+
+    if ($left_quotation_mark !== false)
+    {
+      // Replace left quotation mark
+      $description = str_replace('‘', "'", $description);
+    }
+
+    return $description;
   }
 }
 
